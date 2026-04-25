@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="init elastic search f1 project">
+    <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="add ElasticSearch mapping for F1 dataset">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/f1_dataset_inserter.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_dataset_inserter.py" afterDir="false" />
     </list>
@@ -85,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1777135066750</updated>
-      <workItem from="1777135067673" duration="2295000" />
+      <workItem from="1777135067673" duration="4616000" />
     </task>
     <task id="LOCAL-00001" summary="init elastic search f1 project">
       <option name="closed" value="true" />
@@ -95,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777135136913</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add ElasticSearch mapping for F1 dataset">
+      <option name="closed" value="true" />
+      <created>1777137376692</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1777137376692</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init elastic search f1 project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init elastic search f1 project" />
+    <MESSAGE value="add ElasticSearch mapping for F1 dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ElasticSearch mapping for F1 dataset" />
   </component>
 </project>

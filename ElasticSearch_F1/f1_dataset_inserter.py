@@ -1,4 +1,5 @@
 from elasticsearch import Elasticsearch, helpers
+import pandas as pd
 
 ES_HOST = 'http://localhost:9200'
 ES_INDEX = 'f1'
@@ -20,17 +21,7 @@ MAPPING = {
             "race_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
             "season": {"type": "integer"},
             "round": {"type": "integer"},
-            "race_date": {"type": "date", format: "yyyy-MM-dd"},
-
-            #Sprints
-            "race_id": {"type": "integer"},
-            "driver_id": {"type": "integer"},
-            "number": {"type": "integer"},
-            "grid": {"type": "integer"},
-            "position": {"type": "integer"},
-            "points": {"type": "float"},
-            "laps": {"type": "integer"},
-            "time": {"type": "time"},
+            "race_date": {"type": "date", "format": "yyyy-MM-dd"},
 
             # Circuits
             "circuit_name": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
@@ -39,6 +30,8 @@ MAPPING = {
             "circuit_coords": {"type": "geo_point"},
 
             # Drivers
+            "driver_id": {"type": "integer"},
+            "driver_number": {"type": "integer"},
             "driver_forename": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
             "driver_surname": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
             "driver_nationality": {"type": "keyword"},
@@ -59,3 +52,96 @@ MAPPING = {
         }
     }
 }
+
+
+def load_csv(path: str) -> dict:
+    """Load all relevant csv files into dataframes"""
+    return {
+        "races": pd.read_csv(f"{path}/races.csv"),
+        "results": pd.read_csv(f"{path}/results.csv"),
+        "drivers": pd.read_csv(f"{path}/drivers.csv"),
+        "constructors": pd.read_csv(f"{path}/constructors.csv"),
+        "circuits": pd.read_csv(f"{path}/circuits.csv"),
+        "status": pd.read_csv(f"{path}/status.csv")
+    }
+
+
+def safe_int(val):
+    try:
+        return int(val)
+    except (ValueError, TypeError):
+        return None
+
+
+def safe_float(val):
+    try:
+        return float(val)
+    except (ValueError, TypeError):
+        return None
+
+def safe_str(val):
+    try:
+        return str(val)
+    except (ValueError, TypeError):
+        return None
+
+
+def build_document(dfs: dict):
+    """
+    Merge all csv's into a flat list of documents - one document per race result.
+    This is the denormalization step: ElasticSearch works best with flat documents rather than nested relational tables.
+    """
+
+    df = dfs["results"].merge(dfs["races"], on="raceId", suffixes=("", "_race"))
+    df = df.merge(dfs["drivers"], on="driverId", suffixes=("", "_driver"))
+    df = df.merge(dfs["constructors"], on="constructorId", suffixes=("", "_constructor"))
+    df = df.merge(dfs["circuits"], on="circuitId", suffixes=("", "_circuit"))
+    df = df.merge(dfs["status"], on="statusId", suffixes=("", "_status"))
+    df.replace("\\N", None, inplace=True)
+
+    documents = []
+    for _, row in df.iterrows():
+        try:
+            coords = {"lat": float(row["lat"]), "lon": float(row["lng"])}
+        except (TypeError, ValueError):
+            coords = None
+
+        doc = {
+            # Race
+            "race_id": safe_int(row.get("raceId")),
+            "race_name": safe_str(row.get("name")),
+            "season": safe_int(row.get("year")),
+            "round": safe_int(row.get("round")),
+            "race_date": safe_str(row.get("date")),
+
+            # Circuits
+            "circuit_name": safe_str(row.get("name_circuit")),
+            "circuit_location": safe_str(row.get("location")),
+            "circuit_country": safe_str(row.get("country")),
+            "circuit_coords": coords,
+
+            # Driver
+            "driver_id": safe_int(row.get("driverId")),
+            "driver_number": safe_int(row.get("number")),
+            "driver_forename": safe_str(row.get("forename")),
+            "driver_surname": safe_str(row.get("surname")),
+            "driver_nationality": safe_str(row.get("nationality")),
+            "driver_dob": safe_str(row.get("dob")),
+            "driver_code": safe_str(row.get("code")),
+
+            # Constructor
+            "constructor_name": safe_str(row.get("name_constructor")),
+            "constructor_nationality": safe_str(row.get("nationality_constructor")),
+
+            # Race result
+            "grid_position": safe_int(row.get("grid")),
+            "finish_position": safe_int(row.get("positionOrder")),
+            "points": safe_float(row.get("points")),
+            "laps_completed": safe_int(row.get("laps")),
+            "status": safe_str(row.get("status")),
+            "fastest_lap_rank": safe_int(row.get("rank")),
+        }
+
+        documents.append(doc)
+    print(f"Built {len(documents):,} documents")
+    return documents

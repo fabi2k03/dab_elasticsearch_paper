@@ -35,7 +35,7 @@ MAPPING = {
             "driver_forename": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
             "driver_surname": {"type": "text", "fields": {"keyword": {"type": "keyword"}}},
             "driver_nationality": {"type": "keyword"},
-            "driver_dob": {"type": "date", format: "yyyy-MM-dd"},
+            "driver_dob": {"type": "date", "format": "yyyy-MM-dd"},
             "driver_code": {"type": "keyword"},
 
             # Constructors

@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`.">
-      <change afterPath="$PROJECT_DIR$/f1_queries.py" afterDir="false" />
+    <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="init query file">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/f1_queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_queries.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +56,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.f1_dataset_inserter.executor": "Run",
+    "Python.f1_queries.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -70,7 +72,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.f1_queries">
     <configuration name="f1_dataset_inserter" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ElasticSearch_F1" />
       <option name="ENV_FILES" value="" />
@@ -96,8 +98,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="f1_queries" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ElasticSearch_F1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/f1_queries.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.f1_queries" />
         <item itemvalue="Python.f1_dataset_inserter" />
       </list>
     </recent_temporary>
@@ -118,7 +146,7 @@
       <option name="presentableId" value="Default" />
       <updated>1777135066750</updated>
       <workItem from="1777135067673" duration="7352000" />
-      <workItem from="1777272317032" duration="2724000" />
+      <workItem from="1777272317032" duration="3255000" />
     </task>
     <task id="LOCAL-00001" summary="init elastic search f1 project">
       <option name="closed" value="true" />
@@ -168,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777273667297</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="init query file">
+      <option name="closed" value="true" />
+      <created>1777275388199</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1777275388199</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,9 +217,11 @@
     <MESSAGE value="Update workspace.xml to reflect task changes for ElasticSearch integration" />
     <MESSAGE value="Add `main` function for ElasticSearch integration and implement index creation and bulk indexing" />
     <MESSAGE value="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`." />
+    <MESSAGE value="init query file" />
+    <option name="LAST_COMMIT_MESSAGE" value="init query file" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ElasticSearch_F1$f1_queries.coverage" NAME="f1_queries Coverage Results" MODIFIED="1777275827091" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ElasticSearch_F1$f1_dataset_inserter.coverage" NAME="f1_dataset_inserter Coverage Results" MODIFIED="1777272971006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

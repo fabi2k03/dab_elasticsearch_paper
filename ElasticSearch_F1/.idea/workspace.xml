@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="Add `main` function for ElasticSearch integration and implement index creation and bulk indexing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f1_dataset_inserter.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_dataset_inserter.py" afterDir="false" />
+    <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`.">
+      <change afterPath="$PROJECT_DIR$/f1_queries.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1777135066750</updated>
       <workItem from="1777135067673" duration="7352000" />
-      <workItem from="1777272317032" duration="1341000" />
+      <workItem from="1777272317032" duration="2724000" />
     </task>
     <task id="LOCAL-00001" summary="init elastic search f1 project">
       <option name="closed" value="true" />
@@ -161,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777272938256</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`.">
+      <option name="closed" value="true" />
+      <created>1777273667297</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1777273667297</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +180,8 @@
     <MESSAGE value="Add CSV loading and document creation for ElasticSearch" />
     <MESSAGE value="Update workspace.xml to reflect task changes for ElasticSearch integration" />
     <MESSAGE value="Add `main` function for ElasticSearch integration and implement index creation and bulk indexing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add `main` function for ElasticSearch integration and implement index creation and bulk indexing" />
+    <MESSAGE value="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix incorrect syntax in ElasticSearch mapping configuration for `driver_dob`." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ElasticSearch_F1$f1_dataset_inserter.coverage" NAME="f1_dataset_inserter Coverage Results" MODIFIED="1777272971006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

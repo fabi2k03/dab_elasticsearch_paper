@@ -21,7 +21,8 @@ def print_results(title: str, response: dict):
     if aggs:
         print(json.dumps(aggs, indent=2, default=str))
 
-#1. FULL-TEXT SEARCH
+
+# 1. FULL-TEXT SEARCH
 # Demonstrates: text field search with relevance scoring
 # Use case: Search races by name - "monaco" finds "Monaco Grand Prix"
 def search_race_by_name(name: str):
@@ -39,5 +40,26 @@ def search_race_by_name(name: str):
     })
     print_results(f"Full-Text-Search: races matching '{name}'", response)
 
+
+# 2. FUZZY SEARCH
+# Demonstrates: tolerance for typos - "Hamilten" still finds "Hamilton"
+# Use case: Search bar where users may mistype driver names
+def search_driver_fuzzy(surname: str):
+    response = es.search(index=ES_INDEX, body={
+        "query": {
+            "fuzzy": {
+                "driver_surname": {
+                    "value": surname,
+                    "fuzziness": "AUTO"  # AUTO: allows 1-2 character edits
+                }
+            },
+        },
+        "_source": ["driver_forename", "driver_surname", "driver_nationality"],
+        "size": 1
+    })
+    print_results(f"Fuzzy-Search: drivers matching '{surname}'", response)
+
+
 if __name__ == "__main__":
-    search_race_by_name("monaco")   # 1. Full-text-search
+    search_race_by_name("monaco")  # 1. Full-text-search
+    search_driver_fuzzy("hamilten")  # 2. Fuzzy search (typo)

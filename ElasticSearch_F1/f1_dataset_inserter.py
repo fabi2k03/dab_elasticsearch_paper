@@ -79,6 +79,7 @@ def safe_float(val):
     except (ValueError, TypeError):
         return None
 
+
 def safe_str(val):
     try:
         return str(val)
@@ -145,3 +146,43 @@ def build_document(dfs: dict):
         documents.append(doc)
     print(f"Built {len(documents):,} documents")
     return documents
+
+
+def create_index(es: Elasticsearch):
+    """Delete existing index and create a fresh one with the mapping"""
+    if es.indices.exists(index=ES_INDEX):
+        es.indices.delete(index=ES_INDEX)
+    es.indices.create(index=ES_INDEX, body=MAPPING)
+
+
+def bulk_index(es: Elasticsearch, documents: list):
+    """Bulk index all documents into ElasticSearch"""
+    actions = [{"_index": ES_INDEX, "_source": doc}
+               for doc in documents]
+
+    success, errors = helpers.bulk(es, actions, chunk_size=500, raise_on_error=False)
+    if errors:
+        print(f"Errors: {len(errors)} documents failed")
+        for e in errors:
+            print(e)
+
+def main():
+    es = Elasticsearch(hosts=ES_HOST)
+    if not es.ping():
+        print("Elasticsearch is not reachable")
+        return
+
+    info = es.info()
+    print(f"Connected! ES Version: {info['version']['number']}")
+
+    dfs = load_csv(DATASET_PATH)
+    documents = build_document(dfs)
+    create_index(es)
+    bulk_index(es, documents)
+
+    es.indices.refresh(index=ES_INDEX)
+    count = es.count(index=ES_INDEX)["count"]
+    print(f"\nDone! Index '{ES_INDEX}' contains {count:,} documents.")
+
+if __name__ == "__main__":
+    main()

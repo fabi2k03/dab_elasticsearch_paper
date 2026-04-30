@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fea9559-284c-408b-8a45-f28fe3d4e034" name="Changes" comment="Add filtering, boolean, and aggregation queries to `f1_queries.py` with usage examples">
-      <change afterPath="$PROJECT_DIR$/../Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +146,8 @@
       <updated>1777135066750</updated>
       <workItem from="1777135067673" duration="7352000" />
       <workItem from="1777272317032" duration="9514000" />
-      <workItem from="1777528258458" duration="309000" />
+      <workItem from="1777528258458" duration="479000" />
+      <workItem from="1777528743555" duration="946000" />
     </task>
     <task id="LOCAL-00001" summary="init elastic search f1 project">
       <option name="closed" value="true" />

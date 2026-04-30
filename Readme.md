@@ -66,3 +66,32 @@ This script demonstrates the following Elasticsearch query types:
 | Sum aggregation         | Calculate totals, e.g. points per consturctur       |
  | Cardinality aggregation | Count distinct values, e.g. races per season        |
 |Mutli-match search | Search a single term across multiple fields at once |
+
+## Kibana Dashboard
+Once the data is indexed, open Kibana at http://localhost:5601 and create a data view:
+1. Go to Stack Management > Data Views
+2. Create a new data view with index pattern ```f1``` and time field ```race_date```
+
+Visualization with the dashboard:
+
+*Here screenshot will be addded*
+
+Note: When opening the dashboard for the first time, set the time range to an absolute range
+from `1950-01-01` to `2024-12-31`, as the default time filter of "last 15 minutes" will return no results
+for historical data.
+
+---
+
+## Key Elasticsearch Concepts Demonstrated
+**Denormalization:** Instead of storing data across multiple relational tables, all relevant fields are merged into a
+single flat document per race result. This is the standard approach in Elasticsearch and enables fast aggregations and searches
+without expensive joins.
+
+**Index mapping:** The mapping defines the data types of each field before indexing. Field types such as
+```text```, ```keyword```, ```integer```, ```date``` and ```geo_point``` control how Elasticsearch stores and queries the data.
+
+**Bulk indexing:** Documents are sent to Elasticsearch in batches of 500 using the bulk API, which is significantly more
+efficient than indexing documents one by one.
+
+**geo_point:** Storing circuit coordinates as ```geo_point``` allwos Kibana to render all circuits on an interactive world
+map without any additional configuration.

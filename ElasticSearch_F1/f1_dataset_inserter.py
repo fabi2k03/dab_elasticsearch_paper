@@ -11,7 +11,7 @@ keyword ... for fields you want to filter or group by exactly (e.g. group by cou
 text + keyword ... on some fields i want both functionality - to search them fuzzily and aggregate them by exact values
 integer/float ... numeric fields, enables range queries and numeric aggregations
 date ... used that elasticsearch understands chronological order and enables filter by time ranges
-geo_point ... stores lat/lon coordinates - with this type visualizations in kinbana can be created
+geo_point ... stores lat/lon coordinates - with this type visualizations in kibana can be created
 """
 MAPPING = {
     "mappings": {

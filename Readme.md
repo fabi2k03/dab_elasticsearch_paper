@@ -74,7 +74,39 @@ Once the data is indexed, open Kibana at http://localhost:5601 and create a data
 
 Visualization with the dashboard:
 
-*Here screenshot will be addded*
+he following visualizations were created in Kibana using the indexed F1 dataset:
+![image](dashboards/Dashboard_Overview.png)
+---
+**Wins per driver:**
+
+Top 10 drivers ranked by total race wins across their entire F1 career, from 1950 to 2024. Michael Schumacher and 
+Lewis Hamilton dominate the chart as the two most successful drivers in F1 history.
+![image](dashboards/Wins_per_driver.png)
+---
+**Races per Season**
+
+Number of individual races held per F1 season from 1950 to 2024. The chart clearly shows how the calendar has grown over
+the decades, from around 7 races in the early 1950s to over 20 races in recent seasons.
+![image](dashboards/Races_per_season.png)
+---
+**Driver Nationalities**
+
+Distribution of all F1 drivers by nationality. British and American drivers make up the largest share, reflecting the 
+historical roots of the sport in Europe and North America.
+![image](dashboards/Driver_nat.png)
+---
+**Sum of points per Constructor**
+
+Total championship points accumulated per constructor across all seasons. Teams like Ferrari, McLaren and Mercedes stand
+out as the most successful constructors in the history of the sport.
+![image](dashboards/Sum_of_points_Constructor.png)
+---
+**Map View of F1 Tracks**
+
+World map showing the geographic location of every F1 circuit in the dataset, rendered using the geo_point field type 
+defined in the Elasticsearch index mapping. The map illustrates the global reach of Formula 1, with circuits spread
+across Europe, the Americas, Asia and the Middle East.
+![image](dashboards/Map_Tracks.png)
 
 Note: When opening the dashboard for the first time, set the time range to an absolute range
 from `1950-01-01` to `2024-12-31`, as the default time filter of "last 15 minutes" will return no results

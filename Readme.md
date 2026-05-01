@@ -97,7 +97,7 @@ the decades, from around 7 races in the early 1950s to over 20 races in recent s
 ---
 **Driver Nationalities**
 
-Distribution of all F1 drivers by nationality. British and American drivers make up the largest share, reflecting the 
+Distribution of all F1 drivers by nationality. British and Italian drivers make up the largest share, reflecting the 
 historical roots of the sport in Europe and North America.
 
 ![image](dashboards/Driver_nat.png)
@@ -105,7 +105,7 @@ historical roots of the sport in Europe and North America.
 ---
 **Sum of points per Constructor**
 
-Total championship points accumulated per constructor across all seasons. Teams like Ferrari, McLaren and Mercedes stand
+Total championship points accumulated per constructor across all seasons. Teams like Ferrari, Red Bull and Mercedes stand
 out as the most successful constructors in the history of the sport.
 
 ![image](dashboards/Sum_of_points_Constructor.png)

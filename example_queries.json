@@ -1,0 +1,63 @@
+//Full text search
+{ "match": { "race_name": "monaco" } }
+
+//Fuzzy
+{ "fuzzy": { "driver_surname": { "value": "Hamilten", "fuzziness": "AUTO" } } }
+
+//Bool
+{ "bool": { "must": [{ "match": { "driver_surname": "Hamilton" } }],
+            "filter": [{ "range": { "season": { "gte": 2010 } } }] } }
+
+//Aggregation
+{ "aggs": { "wins_per_driver": { "terms": { "field": "driver_surname.keyword" } } } }
+
+
+
+
+
+
+GET /f1/_search   
+{
+  "query": {         
+    "match": {          
+      "race_name": "monaco" 
+    }
+  }
+}
+
+
+
+{
+  "took": 3,
+  "hits": {
+    "total": { "value": 418 },
+    "hits": [
+      {
+        "_index": "f1",
+        "_id": "1",
+        "_score": 4.21,
+        "_source": {
+          "race_name": "Monaco Grand Prix",
+          "season": 2023,
+          "circuit_country": "Monaco",
+          "driver_surname": "Verstappen",
+          "finish_position": 1,
+          "points": 25.0
+        }
+      },
+      {
+        "_index": "f1",
+        "_id": "2",
+        "_score": 4.21,
+        "_source": {
+          "race_name": "Monaco Grand Prix",
+          "season": 2023,
+          "circuit_country": "Monaco",
+          "driver_surname": "Alonso",
+          "finish_position": 2,
+          "points": 18.0
+        }
+      }
+    ]
+  }
+}

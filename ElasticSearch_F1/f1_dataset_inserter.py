@@ -149,7 +149,7 @@ def build_document(dfs: dict):
 
 
 def create_index(es: Elasticsearch):
-    """Delete existing index and create a fresh one with the mapping"""
+    """Delete the existing index and create a fresh one with the mapping"""
     if es.indices.exists(index=ES_INDEX):
         es.indices.delete(index=ES_INDEX)
     es.indices.create(index=ES_INDEX, body=MAPPING)
@@ -173,7 +173,7 @@ def main():
         return
 
     info = es.info()
-    print(f"Connected! ES Version: {info['version']['number']}")
+    print(f"Connected ES Version: {info['version']['number']}")
 
     dfs = load_csv(DATASET_PATH)
     documents = build_document(dfs)
@@ -182,7 +182,7 @@ def main():
 
     es.indices.refresh(index=ES_INDEX)
     count = es.count(index=ES_INDEX)["count"]
-    print(f"\nDone! Index '{ES_INDEX}' contains {count:,} documents.")
+    print(f"\nDone Index '{ES_INDEX}' contains {count:,} documents.")
 
 if __name__ == "__main__":
     main()

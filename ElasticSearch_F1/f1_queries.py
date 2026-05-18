@@ -189,7 +189,7 @@ def multi_match_search(query: str):
 
 if __name__ == "__main__":
     search_race_by_name("monaco")  # 1. Full-text-search
-    search_driver_fuzzy("hamilten")  # 2. Fuzzy search (typo)
+    search_driver_fuzzy("homilten")  # 2. Fuzzy search (typo)
     filter_races_by_country("Italy")  # 3. Filter (exact)
     bool_query_podium_finishes("verstappen", 2016, 3)  # 4. Bool query
     agg_wins_per_driver(10)  # 5. Aggregation: wins

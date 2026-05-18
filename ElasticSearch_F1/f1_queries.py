@@ -6,9 +6,13 @@ import os
 load_dotenv()
 
 ES_HOST = os.getenv("ES_HOST_LOCAL")
+ES_API_KEY = os.getenv("ES_API_KEY")
 ES_INDEX = 'f1'
 
-es = Elasticsearch(hosts=ES_HOST)
+es = Elasticsearch(hosts=ES_HOST, api_key=ES_API_KEY)
+if not es.ping():
+    print("Elasticsearch is not reachable")
+    exit(1)
 
 
 def print_results(title: str, response: dict):

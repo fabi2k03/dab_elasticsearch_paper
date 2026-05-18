@@ -56,15 +56,15 @@ python f1_queries.py
 ```
 This script demonstrates the following Elasticsearch query types:
 
-| Query                   | Description                                         |
-|-------------------------|-----------------------------------------------------|
-| Full-text search        | Search races by name using tokenized text matching  |
-| Fuzzy search            | Find drivers even when the name contains a typo     |
-| Filter                  | Exact match one keyword field such as country       |
-| Bool query              | Combine multible conditions using must and filter   |
-| Terms aggregation       | Group and count results, e.g. wins per driver       |
-| Sum aggregation         | Calculate totals, e.g. points per consturctur       |
- | Cardinality aggregation | Count distinct values, e.g. races per season        |
+| Query                   | Description                                        |
+|-------------------------|----------------------------------------------------|
+| Full-text search        | Search races by name using tokenized text matching |
+| Fuzzy search            | Find drivers even when the name contains a typo    |
+| Filter                  | Exact match one keyword field such as country      |
+| Bool query              | Combine multiple conditions using must and filter  |
+| Terms aggregation       | Group and count results, e.g. wins per driver      |
+| Sum aggregation         | Calculate totals, e.g. points per consturctor      |
+ | Cardinality aggregation | Count distinct values, e.g. races per season       |
 |Mutli-match search | Search a single term across multiple fields at once |
 
 ## Kibana Dashboard

@@ -1,7 +1,14 @@
 from elasticsearch import Elasticsearch, helpers
+from dotenv import load_dotenv
+import os
 import pandas as pd
 
-ES_HOST = 'http://localhost:9200'
+load_dotenv()
+
+#ES_HOST = 'http://localhost:9200'
+#ES_HOST = os.getenv("ES_HOST_LOCAL")
+ES_HOST = os.getenv("ES_HOST_CLOUD")
+ES_API_KEY = os.getenv("ES_API_KEY")
 ES_INDEX = 'f1'
 DATASET_PATH = "../f1_dataset"
 
@@ -167,7 +174,7 @@ def bulk_index(es: Elasticsearch, documents: list):
             print(e)
 
 def main():
-    es = Elasticsearch(hosts=ES_HOST)
+    es = Elasticsearch(hosts=ES_HOST, api_key=ES_API_KEY)
     if not es.ping():
         print("Elasticsearch is not reachable")
         return

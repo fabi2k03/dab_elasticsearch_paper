@@ -1,7 +1,11 @@
 from elasticsearch import Elasticsearch
 import json
+from dotenv import load_dotenv
+import os
 
-ES_HOST = 'http://localhost:9200'
+load_dotenv()
+
+ES_HOST = os.getenv("ES_HOST_LOCAL")
 ES_INDEX = 'f1'
 
 es = Elasticsearch(hosts=ES_HOST)

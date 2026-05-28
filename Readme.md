@@ -1,6 +1,6 @@
 # F1 Elasticsearch
-A practical of Elasticsearch using the Formula 1 Word Championship dataset (1950 - 2024).
-The project indexes races results, driver data, constructor data and curcuit information in into elasticsarch
+A practical of Elasticsearch using the Formula 1 World Championship dataset (1950 - 2024).
+The project indexes races results, driver data, constructor data and circuit information in into Elasticsearch
 and demonstrates core features such as full-text-search, fuzzy search, filtering, 
 bool queries and aggregations. A Kibana dashboard provides visual insights into the data.
 
@@ -12,14 +12,14 @@ bool queries and aggregations. A Kibana dashboard provides visual insights into 
 - Provides Kibana visualizations for drivers, constructors, seasons and circuits
 - Includes a map visualization using circuit coordinates
 
-## Requierments
+## Requirements
 - **Dataset:** Download the dataset from Kaggle https://www.kaggle.com/datasets/jtrotman/formula-1-race-data and 
-pace it into ```/f1_dataset``` folder
+place it into ```/f1_dataset``` folder
 - **Elasticsearch instance**
 - **Kibana instance**
 
 ## Installation
-To setup an elasticsarch instance with kibana for viusalisation - run the docker-compose script in this repository
+To setup an Elasticsearch instance with kibana for visualisation – run the docker-compose script in this repository
 ```jsunicoderegexp
 docker-compose.yml
 ```
@@ -27,14 +27,14 @@ docker-compose.yml
 ```bash
 docker compose up -d
 ```
-2) Run ```docker ps``` to make sure that the elasticsarch and the kibana container is running
+2) Run ```docker ps``` to make sure that the Elasticsearch and the kibana container is running
 ```bash
 fabiankopf@MacBook-Pro-Fabian ElasticSearch % docker ps
 CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS          PORTS                                         NAMES
 xxx   kibana:9.3.1          "/bin/tini -- /usr/l…"   11 seconds ago   Up 10 seconds   0.0.0.0:5601->5601/tcp, [::]:5601->5601/tcp   kibana
 xxx   elasticsearch:9.3.1   "/bin/tini -- /usr/l…"   11 seconds ago   Up 10 seconds   0.0.0.0:9200->9200/tcp, [::]:9200->9200/tcp   elasticsearch
 ```
-3)The Elasticsearch instance is available at http://localhost:9200 and the Kibana instance is available at http://localhost:5601
+3) The Elasticsearch instance is available at http://localhost:9200 and the Kibana instance is available at http://localhost:5601
 
 ### Elasticsearch & Kibana using Elastic Cloud
 Alternatively, you can use Elastic Cloud to run Elasticsearch and Kibana. How this works is described in the paper.
@@ -74,9 +74,9 @@ This script demonstrates the following Elasticsearch query types:
 | Filter                  | Exact match one keyword field such as country      |
 | Bool query              | Combine multiple conditions using must and filter  |
 | Terms aggregation       | Group and count results, e.g. wins per driver      |
-| Sum aggregation         | Calculate totals, e.g. points per consturctor      |
+| Sum aggregation         | Calculate totals, e.g. points per constructor      |
  | Cardinality aggregation | Count distinct values, e.g. races per season       |
-|Mutli-match search | Search a single term across multiple fields at once |
+| Multi-match search      | Search a single term across multiple fields at once |
 
 ## Kibana Dashboard
 Once the data is indexed, open Kibana at http://localhost:5601 and create a data view:
@@ -147,5 +147,5 @@ without expensive joins.
 **Bulk indexing:** Documents are sent to Elasticsearch in batches of 500 using the bulk API, which is significantly more
 efficient than indexing documents one by one.
 
-**geo_point:** Storing circuit coordinates as ```geo_point``` allwos Kibana to render all circuits on an interactive world
+**geo_point:** Storing circuit coordinates as ```geo_point``` allows Kibana to render all circuits on an interactive world
 map without any additional configuration.

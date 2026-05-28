@@ -28,6 +28,9 @@ xxx   elasticsearch:9.3.1   "/bin/tini -- /usr/l…"   11 seconds ago   Up 10 se
 ```
 3)The Elasticsearch instance is available at http://localhost:9200 and the Kibana instance is available at http://localhost:5601
 
+### Elasticsearch & Kibana using Elastic Cloud
+Alternatively, you can use Elastic Cloud to run Elasticsearch and Kibana. How this works is described in the paper.
+
 ## Usage
 ### Indexing the data
 To start off, the data in the ```/f1_dataset``` folder needs to be added. First run the indexing

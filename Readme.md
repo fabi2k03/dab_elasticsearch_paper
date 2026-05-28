@@ -4,6 +4,14 @@ The project indexes races results, driver data, constructor data and curcuit inf
 and demonstrates core features such as full-text-search, fuzzy search, filtering, 
 bool queries and aggregations. A Kibana dashboard provides visual insights into the data.
 
+## Features 
+- Indexes Formula 1 race result data from 1950 to 2024
+- Uses Elasticsearch mappings for text, keyword, date, numeric and geo fields
+- Demonstrates full-text search, fuzzy search, filters, bool queries and aggregations
+- Uses denormalized race result documents for efficient search and analysis
+- Provides Kibana visualizations for drivers, constructors, seasons and circuits
+- Includes a map visualization using circuit coordinates
+
 ## Requierments
 - **Dataset:** Download the dataset from Kaggle https://www.kaggle.com/datasets/jtrotman/formula-1-race-data and 
 pace it into ```/f1_dataset``` folder
